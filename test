@@ -1,0 +1,5 @@
+import streamlit as st
+
+st.title("Test")
+
+image_upload = st.file_uploader("Choisis une image", type = ['png', 'jpg', 'jpeg']
