@@ -6,6 +6,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+import subprocess
+
+# Install Streamlit using pip
+subprocess.call(['pip', 'install', 'streamlit'])
+pip install matplotlib
 
 # Load the car dataset into a pandas DataFrame
 url = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
