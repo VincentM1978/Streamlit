@@ -29,13 +29,20 @@ def main():
     fig, ax = plt.subplots()
     sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1 )
     st.pyplot(fig)
-    st.write("À partir de la carte thermique de corrélation, nous pouvons observer les relations suivantes :")
-    st.write("- Il existe une forte corrélation négative entre la consommation de carburant (mpg) et les caractéristiques telles que le nombre de cylindres, les pouces cubes du moteur,")
-    st.write("les chevaux et le poids en livres. Cela suggère que les voitures ayant un rendement énergétique plus élevé ont tendance à avoir moins de cylindres, une cylindrée plus petite, moins de puissance et un poids inférieur.")
-    st.write("- Il existe une forte corrélation positive entre le nombre de cylindres, les pouces cubes du moteur, les chevaux et le poids en livres.")
-    st.write("Cela indique que les voitures avec plus de cylindres, une plus grande cylindrée, plus de puissance et un poids plus élevé sont généralement corrélées les unes aux autres.")
+    st.write("À partir de la carte thermique de corrélation, nous pouvons voir que :")
+    st.write("Il existe une forte corrélation négative entre le mpg et les cylindres, les pouces cubes, les ch et les poids en livres.")
+    st.write("Cela indique que les voitures avec un rendement énergétique plus élevé ont tendance à avoir moins de cylindres, une cylindrée de moteur plus petite, moins de puissance et un poids inférieur.")
+    st.write("Il existe une forte corrélation positive entre les cylindres, les pouces cubes, les chevaux et les poids en livres.")
+    st.write("Cela indique que les voitures avec plus de cylindres, une plus grande cylindrée, plus de puissance et un poids plus élevé ont tendance à être corrélées les unes aux autres.")
 
-   # Afficher des graphiques de distribution
+    # Ajouter un scatterplot de la relation entre puissance moteur et consommation
+    st.subheader('Relation entre puissance moteur et consommation')
+    fig, ax = plt.subplots()
+    sns.scatterplot(x="hp", y="mpg", data=df_selected_region, ax=ax)
+    st.pyplot(fig)
+    st.write("Le graphique de dispersion montre une relation négative entre la puissance du moteur et le mpg (consommation). Cela indique que les voitures avec une puissance de moteur plus élevée ont tendance à consommer plus d'essence.")
+
+    # Afficher des graphiques de distribution
     st.subheader('Distribution des variables')
     selected_columns = st.multiselect('Sélectionner les variables', df_selected_region.columns)
     for column in selected_columns:
@@ -43,9 +50,7 @@ def main():
         sns.histplot(df_selected_region[column], ax=ax)
         st.pyplot(fig)
 
-    st.write("D'après les histogrammes de distribution, nous pouvons observer les caractéristiques suivantes :")
-    st.write("- La consommation de carburant (mpg) suit approximativement une distribution normale, avec un pic autour de 20 mpg.")
-    st.write("- Le nombre de cylindres présente des pics à 4 et 8 cylindres.")
-    st.write("- Le poids en livres a une distribution approximativement normale, avec un pic autour de 3000 lbs.")
-    st.write("- Le temps nécessaire pour atteindre 60 mph (time-to-60) suit approximativement une distribution normale, avec un pic autour de 15 secondes.")
-    st.write("- L'année de fabrication présente une distribution uniforme, avec un nombre égal de voitures fabriquées chaque
+    st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
+    st.write("La fonction mpg a une distribution à peu près normale, avec un pic autour de 20 mpg.")
+    st.write("La caractéristique des cylindres a une distribution avec des pics à 4 et 8 cylindres.")
+    st.write("La fonction weightlbs a une distribution à peu près normale, avec un pic autour de 3000 lbs.")
