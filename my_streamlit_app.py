@@ -4,39 +4,44 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the car dataset into a pandas DataFrame
-url = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
-df = pd.read_csv(url)
+# Charger les données
+df = pd.read_csv("https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv")
+df['continent'] = df['continent'].str.replace('.', '')
 
 
 # Define the different regions in the dataset
 regions = ["US", "Europe", "Japan"]
 
 def main():
-    st.title('Streamlit : build and share data apps')
+    st.title('Streamlit : build and share data apps - Cars')
     
-    # Create a selectbox for selecting the region
-    selected_region = st.sidebar.selectbox('Select a region:', regions)
-    
-    
-    # Calculate the correlation matrix for the filtered dataset
-    correlation = df.corr()
-    
-    # Create a heatmap for the correlation matrix
-    fig1, ax1 = plt.subplots()
-    sns.heatmap(correlation, annot=True, cmap="coolwarm", ax=ax1)
-    st.pyplot(fig1)
-    
+    # Ajouter des boutons pour filtrer par région
+    regions = df['continent'].unique()
+    selected_region = st.sidebar.selectbox('Sélectionner une région', regions)
+    st.write('You selected', selected_region)
+    df_selected_region = df[df['continent'] == selected_region]
+
+
+
+    # Afficher une analyse de corrélation
+    st.subheader('Analyse de corrélation')
+    correlation = df_selected_region.corr()
+    fig, ax = plt.subplots()
+    sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1 )
+    st.pyplot(fig)
     st.write("À partir de la carte thermique de corrélation, nous pouvons voir que :")
     st.write("Il existe une forte corrélation négative entre le mpg et les cylindres, les pouces cubes, les ch et les poids en livres.")
     st.write("Cela indique que les voitures avec un rendement énergétique plus élevé ont tendance à avoir moins de cylindres, une cylindrée de moteur plus petite, moins de puissance et un poids inférieur.")
     st.write("Il existe une forte corrélation positive entre les cylindres, les pouces cubes, les chevaux et les poids en livres.")
     st.write("Cela indique que les voitures avec plus de cylindres, une plus grande cylindrée, plus de puissance et un poids plus élevé ont tendance à être corrélées les unes aux autres.")
 
-    # Create a histogram for each feature in the filtered dataset
-    fig2, ax2 = plt.subplots(figsize=(10,10))
-    df.hist(bins=20, ax=ax2)
-    st.pyplot(fig2)
+   # Afficher des graphiques de distribution
+    st.subheader('Distribution des variables')
+    selected_columns = st.multiselect('Sélectionner les variables', df_selected_region.columns)
+    for column in selected_columns:
+    fig, ax = plt.subplots()
+    sns.histplot(df_selected_region[column], ax=ax)
+    st.pyplot(fig)
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
     st.write("La fonction mpg a une distribution à peu près normale, avec un pic autour de 20 mpg.")
