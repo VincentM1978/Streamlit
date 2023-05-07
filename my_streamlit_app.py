@@ -1,16 +1,8 @@
-# -*- coding: utf-8 -*-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
-import subprocess
-
-# Install Streamlit using pip
-subprocess.call(['pip', 'install', 'streamlit'])
-pip install matplotlib
 
 # Load the car dataset into a pandas DataFrame
 url = "https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv"
@@ -21,7 +13,7 @@ df = pd.read_csv(url)
 regions = ["US", "Europe", "Japan"]
 
 def main():
-    st.title('Car Dataset Analysis')
+    st.title('Streamlit : build and share data apps')
     
     # Create a selectbox for selecting the region
     selected_region = st.sidebar.selectbox('Select a region:', regions)
@@ -53,6 +45,17 @@ def main():
     st.write("La fonction time-to-60 a une distribution à peu près normale, avec un pic autour de 15 secondes.")
     st.write("La caractéristique de l'année a une distribution uniforme, avec un nombre égal de voitures fabriquées chaque année de 1970 à 1982.") 
 
+    # Create a scatterplot of horsepower vs. weight for the filtered dataset
+    fig3, ax3 = plt.subplots()
+    sns.scatterplot(data=df, x="weightlbs", y="hp", hue="year", alpha=0.7, ax=ax3)
+    st.pyplot(fig3)
+
+    st.write("Le graphique de dispersion montre une relation positive entre la puissance et le poids des voitures,")
+    st.write("ce qui signifie que les voitures plus lourdes ont tendance à avoir plus de puissance. Toutefois,")
+    st.write("il y a une grande variabilité dans la relation et de nombreux points se chevauchent,")
+    st.write("indiquant que d'autres facteurs peuvent également influencer la puissance d'une voiture.")
+    st.write("De plus, la couleur représente l'année de fabrication des voitures,")
+    st.write("mais il n'y a pas de relation claire entre l'année et la relation entre la puissance et le poids..")
 
 if __name__ == '__main__':
     main()
