@@ -39,9 +39,9 @@ def main():
     st.subheader('Distribution des variables')
     selected_columns = st.multiselect('Sélectionner les variables', df_selected_region.columns)
     for column in selected_columns:
-    fig, ax = plt.subplots()
-    sns.histplot(df_selected_region[column], ax=ax)
-    st.pyplot(fig)
+        fig, ax = plt.subplots()
+        sns.histplot(df_selected_region[column], ax=ax)
+        st.pyplot(fig)
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
     st.write("La fonction mpg a une distribution à peu près normale, avec un pic autour de 20 mpg.")
