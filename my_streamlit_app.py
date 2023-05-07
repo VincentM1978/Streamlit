@@ -53,4 +53,4 @@ def main():
     st.write("La fonction weightlbs a une distribution à peu près normale, avec un pic autour de 3000 lbs.")
 
 if __name__ == '__main__':
-main()
+    main()
