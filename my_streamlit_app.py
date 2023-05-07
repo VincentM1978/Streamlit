@@ -30,8 +30,10 @@ def main():
     sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1 )
     st.pyplot(fig)
     st.write("À partir de la carte thermique de corrélation, nous pouvons observer les relations suivantes :")
-    st.write("- Il existe une forte corrélation négative entre la consommation de carburant (mpg) et les caractéristiques telles que le nombre de cylindres, les pouces cubes du moteur, les chevaux et le poids en livres. Cela suggère que les voitures ayant un rendement énergétique plus élevé ont tendance à avoir moins de cylindres, une cylindrée plus petite, moins de puissance et un poids inférieur.")
-    st.write("- Il existe une forte corrélation positive entre le nombre de cylindres, les pouces cubes du moteur, les chevaux et le poids en livres. Cela indique que les voitures avec plus de cylindres, une plus grande cylindrée, plus de puissance et un poids plus élevé sont généralement corrélées les unes aux autres.")
+    st.write("- Il existe une forte corrélation négative entre la consommation de carburant (mpg) et les caractéristiques telles que le nombre de cylindres, les pouces cubes du moteur,")
+    st.write("les chevaux et le poids en livres. Cela suggère que les voitures ayant un rendement énergétique plus élevé ont tendance à avoir moins de cylindres, une cylindrée plus petite, moins de puissance et un poids inférieur.")
+    st.write("- Il existe une forte corrélation positive entre le nombre de cylindres, les pouces cubes du moteur, les chevaux et le poids en livres.")
+    st.write("Cela indique que les voitures avec plus de cylindres, une plus grande cylindrée, plus de puissance et un poids plus élevé sont généralement corrélées les unes aux autres.")
 
    # Afficher des graphiques de distribution
     st.subheader('Distribution des variables')
