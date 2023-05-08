@@ -70,9 +70,10 @@ def main():
     st.sidebar.text('Valeurs remarquables du jeu de données intégral')
     df2=df.drop('year', axis = 1)
     st.sidebar.dataframe(df2.describe())
+    
     df_selected_region2 = df_selected_region.drop('year', axis=1)
-    st.sidebar.text('Valeurs remarquables du jeu de données de la région ', selected_region)
-    st.sidebar.dataframe(df_selected_region.describe())
+    st.text('Valeurs remarquables du jeu de données de la région ', selected_region)
+    st.dataframe(df_selected_region.describe())
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
     st.write("Sur 261 véhicules, 125 sont en 4 cylindres ( 47,89 % ) , 55 en 6 cylindres (21 % ) et 76 en 8 cylindres (29 %)")
