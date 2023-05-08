@@ -25,7 +25,8 @@ def main():
     
     # Ajouter des boutons pour filtrer par région
     regions = df['continent'].unique()
-    selected_region = st.sidebar.selectbox('Sélectionner une région', regions)
+    st.sidebar.subheader('Sélectionner une région')
+    selected_region = st.sidebar.selectbox(regions)
     st.header('You selected', selected_region)
     df_selected_region = df[df['continent'] == selected_region]
 
@@ -67,7 +68,7 @@ def main():
         sns.histplot(df_selected_region[column], ax=ax)
         st.pyplot(fig)
     
-    st.sidebar.text('Valeurs remarquables du jeu de données intégral')
+    st.sidebar.subheader('Valeurs remarquables du jeu de données intégral')
     df2=df.drop('year', axis = 1)
     st.sidebar.dataframe(df2.describe())
     
