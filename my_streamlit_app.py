@@ -57,7 +57,9 @@ def main():
     plt.ylabel('Consommation litres aux 100km')
     plt.title('Relation entre la consommation et la taille des moteurs')
     st.pyplot(fig2)
-
+    
+    st.write("Nous ne serons pas étonnés de vérifier la forte corrélation entre la puissance et la taille du moteur et sa consommation en carburant.")
+    
     # Afficher des graphiques de distribution
     st.subheader('Distribution des variables')
     selected_columns = st.multiselect('Sélectionner les variables', df_selected_region.columns)
