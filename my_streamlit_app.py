@@ -41,7 +41,7 @@ def main():
     # Ajouter un regplot de la relation entre puissance moteur et consommation
     st.subheader('Relation entre puissance moteur et consommation')
     fig, ax = plt.subplots()
-    sns.regplot(x="hp", y="mpg", data=df_selected_region, ax=ax)
+    sns.regplot(x="hp", y="consommation_litre_100km", data=df_selected_region, ax=ax)
     st.pyplot(fig)
     
     # Ajouter un scatterplot de la relation entre taille du moteur, année et consommation
