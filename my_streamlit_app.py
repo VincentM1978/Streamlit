@@ -45,12 +45,13 @@ def main():
     st.pyplot(fig)
     
     # Ajouter un scatterplot de la relation entre taille du moteur, année et consommation
-    plt.figure(figsize=(8, 6))
+    st.subheader('Relation entre taille du moteur et consommation')
+    fig2, ax = plt.subplots()
     sns.scatterplot(x='cm3', y='consommation_litre_100km', data=df_selected_region, hue = "year")
     plt.xlabel('Taille du moteur en cm³')
     plt.ylabel('Consommation litres aux 100km')
     plt.title('Relation entre la consommation et la taille des moteurs')
-    plt.show()
+    st.pyplot(fig2)
 
     # Afficher des graphiques de distribution
     st.subheader('Distribution des variables')
