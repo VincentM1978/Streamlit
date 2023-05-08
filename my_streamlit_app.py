@@ -26,7 +26,7 @@ def main():
     # Ajouter des boutons pour filtrer par région
     regions = df['continent'].unique()
     st.sidebar.subheader('Sélectionner une région')
-    selected_region = st.sidebar.selectbox(regions)
+    selected_region = st.sidebar.selectbox('', regions)
     st.header('You selected', selected_region)
     df_selected_region = df[df['continent'] == selected_region]
 
