@@ -33,9 +33,12 @@ def main():
     st.subheader('Analyse de corrélation')
     correlation = df_selected_region.corr()
     fig, ax = plt.subplots()
-    sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1 )
+    sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1, cmap='coolwarm' )
     st.pyplot(fig)
     st.write("À partir de la carte thermique de corrélation, nous pouvons voir que :")
+    st.write("la consommation des véhicules est fortement corrélée ")
+    st.write("")
+    st.write("")
    
 
     # Ajouter un regplot de la relation entre puissance moteur et consommation
