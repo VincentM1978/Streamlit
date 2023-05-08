@@ -66,8 +66,8 @@ def main():
         sns.histplot(df_selected_region[column], ax=ax)
         st.pyplot(fig)
     
-    df.describe()
-    df_selected_region.describe
+    st.dataframe(df.describe())
+    st.dataframe(df_selected_region.describe())
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
     st.write("Sur 261 véhicules, 125 sont en 4 cylindres ( 47,89 % ) , 55 en 6 cylindres (21 % ) et 76 en 8 cylindres (29 %)")
