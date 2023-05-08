@@ -9,7 +9,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/murpi/wilddata/master/quests
 df['continent'] = df['continent'].str.replace('.', '')
 
 # Ajouter la colonne "consommation_litre_100km"
-df['consommation_litre_100km'] = round(235.21 / df['mpg'],2)
+df['L/100km'] = round(235.21 / df['mpg'],2)
 df = df.drop('mpg', axis=1)
 
 # Créer la colonne "cm3" à partir de la colonne "cubicinches"
