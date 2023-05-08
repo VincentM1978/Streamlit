@@ -73,7 +73,7 @@ def main():
     st.sidebar.dataframe(df2.describe())
     
     df_selected_region2 = df_selected_region.drop('year', axis=1)
-    st.text('Valeurs remarquables du jeu de données de la région ', selected_region)
+    st.subheader("Valeurs remarquables du jeu de données de la région ", selected_region)
     st.dataframe(df_selected_region.describe())
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
