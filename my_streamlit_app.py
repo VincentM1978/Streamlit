@@ -8,6 +8,12 @@ import seaborn as sns
 df = pd.read_csv("https://raw.githubusercontent.com/murpi/wilddata/master/quests/cars.csv")
 df['continent'] = df['continent'].str.replace('.', '')
 
+# Ajouter la colonne "consommation_litre_100km"
+df['consommation_litre_100km'] = round(235.21 / df['mpg'],2)
+
+# Créer la colonne "cm3" à partir de la colonne "cubicinches"
+df['cm3'] = df['cubicinches'] * 16.387
+
 
 # Define the different regions in the dataset
 regions = ["US", "Europe", "Japan"]
