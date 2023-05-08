@@ -25,7 +25,7 @@ def main():
     # Ajouter des boutons pour filtrer par région
     regions = df['continent'].unique()
     selected_region = st.sidebar.selectbox('Sélectionner une région', regions)
-    st.write('You selected', selected_region)
+    st.header('You selected', selected_region)
     df_selected_region = df[df['continent'] == selected_region]
 
 
@@ -36,10 +36,11 @@ def main():
     fig, ax = plt.subplots()
     sns.heatmap(correlation, annot=True, ax=ax,vmax=1, vmin=-1, cmap='coolwarm' )
     st.pyplot(fig)
-    st.write("À partir de la carte thermique de corrélation, nous pouvons voir que :")
-    st.write("la consommation des véhicules est fortement corrélée ")
-    st.write("")
-    st.write("")
+    st.markdown("À partir de la carte thermique de corrélation, nous pouvons voir que :")
+    st.markdown("la consommation des véhicules est fortement corrélée à leur puissance, leur masse et la taille de leur moteur.")
+    st.write("On constate une corrélation négative entre la consommation et l'année, ")
+    st.write("ce qui signifie que les constructeurs ont tendance à faire des véhicules moins gourmands au fil des améliorations techniques.")
+    st.write("Sans suprise, les véhicules plus lourds ont un moteur plus gros et une consommation supérieure aux plus légers.")
    
 
     # Ajouter un regplot de la relation entre puissance moteur et consommation
@@ -64,10 +65,13 @@ def main():
         fig, ax = plt.subplots()
         sns.histplot(df_selected_region[column], ax=ax)
         st.pyplot(fig)
+    
+    df.describe()
+    df_selected_region.describe
 
     st.write("D'après l'histogramme de distribution, nous pouvons voir que :")
-    st.write("La fonction mpg a une distribution à peu près normale, avec un pic autour de 20 mpg.")
-    st.write("La caractéristique des cylindres a une distribution avec des pics à 4 et 8 cylindres.")
+    st.write("Sur 261 véhicules, 125 sont en 4 cylindres ( 47,89 % ) , 55 en 6 cylindres (21 % ) et 76 en 8 cylindres (29 %)")
+    st.write("Si la moyenne des tailles des moteurs est à  ")
     st.write("La fonction weightlbs a une distribution à peu près normale, avec un pic autour de 3000 lbs.")
 
 if __name__ == '__main__':
