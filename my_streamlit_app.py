@@ -10,7 +10,7 @@ df['continent'] = df['continent'].str.replace('.', '')
 
 # Ajouter la colonne "consommation_litre_100km"
 df['consommation_litre_100km'] = round(235.21 / df['mpg'],2)
-df = df.drop['mpg']
+df = df.drop(df['mpg'])
 
 # Créer la colonne "cm3" à partir de la colonne "cubicinches"
 df['cm3'] = df['cubicinches'] * 16.387
