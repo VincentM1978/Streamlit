@@ -14,6 +14,7 @@ df = df.drop('mpg', axis=1)
 
 # Créer la colonne "cm3" à partir de la colonne "cubicinches"
 df['cm3'] = df['cubicinches'] * 16.387
+df = df.drop('cubicinches', axis=1)
 
 
 # Define the different regions in the dataset
@@ -67,7 +68,9 @@ def main():
         st.pyplot(fig)
     
     st.sidebar.text('Valeurs remarquables du jeu de données intégral')
-    st.sidebar.dataframe(df.describe())
+    df2=df.drop('year', axis = 1)
+    st.sidebar.dataframe(df2.describe())
+    df_selected_region2 = df_selected_region.drop('year', axis=1)
     st.sidebar.text('Valeurs remarquables du jeu de données de la région ', selected_region)
     st.sidebar.dataframe(df_selected_region.describe())
 
