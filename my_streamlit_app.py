@@ -32,12 +32,19 @@ def main():
     st.write("À partir de la carte thermique de corrélation, nous pouvons voir que :")
    
 
-    # Ajouter un scatterplot de la relation entre puissance moteur et consommation
+    # Ajouter un regplot de la relation entre puissance moteur et consommation
     st.subheader('Relation entre puissance moteur et consommation')
     fig, ax = plt.subplots()
-    sns.scatterplot(x="hp", y="mpg", data=df_selected_region, ax=ax)
+    sns.regplot(x="hp", y="mpg", data=df_selected_region, ax=ax)
     st.pyplot(fig)
-   
+    
+    # Ajouter un scatterplot de la relation entre taille du moteur, année et consommation
+    plt.figure(figsize=(8, 6))
+    sns.scatterplot(x='cm3', y='consommation_litre_100km', data=df_selected_region, hue = "year")
+    plt.xlabel('Taille du moteur en cm³')
+    plt.ylabel('Consommation litres aux 100km')
+    plt.title('Relation entre la consommation et la taille des moteurs')
+    plt.show()
 
     # Afficher des graphiques de distribution
     st.subheader('Distribution des variables')
